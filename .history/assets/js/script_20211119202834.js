@@ -13,7 +13,7 @@ var passwordPool = []
 //end up with a password that doesn't use all the list items.
 //the function is reusable so we can use it to grab any random character from any list that we need to.
 function grabRandom(list) {
-  //we made the maxLength first because we don't go over that
+  //we made the maxLength first becaus ewe don't go over that
   var maxLength = list.length - 1
   //we used math to do something
   var random = Math.floor(Math.random() * (maxLength - 0 + 1)) + 0;
@@ -26,10 +26,10 @@ function generatePassword() {
   var finalPassword = []
   //declaring our variables with prompts to ask what people what in their password
   var passwordLength = prompt("How long do you want your password to be? Please enter a number between 8 and 128.");
-  var passwordSpecialCharacter = confirm("Do you want any special characters in your password? (OK meaning 'yes' and cancel meaning 'no'");
-  var passwordUpperCase = confirm("Do you want an upper case letters in your password? ");
+  var passwordSpecialCharacter = confirm("Do you want any special characters in your password?");
+  var passwordUpperCase = confirm("Do you want an upper case letters in your password?");
   var passwordLowerCase = confirm("Do you want any lower case letters in your password?");
-  var passwordNumbers = confirm("Do you want any numbers in your password? ");
+  var passwordNumbers = confirm("Do you want any numbers in your password?");
   console.log(passwordLength, passwordSpecialCharacter, passwordUpperCase, passwordLowerCase, passwordNumbers);
   // four individual if statements to check if they answered yes to each question
   if (passwordSpecialCharacter === true) {
@@ -68,22 +68,15 @@ function generatePassword() {
 
 
 // Write password to the #password input
- 
-function writePassword() {
-  //so this is literally running the function we made above and putting it with the id #password in the html
-  var password = generatePassword();
-  // so this corresponds to the id in the html
-  var passwordText = document.querySelector("#password");
-//I'm not exactly sure what this means
-  passwordText.value = password;
-  //What I don't understand is this return final password because finalPassword was only inside the previous function
-  //so how is this doing anything? Is it doing anything?
-  return finalPassword
-}
+//I'm pretty sure this doesn't do anything 
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-// Add event listener to generate button, it feels like its going backward but the way I understand it
-// is the click is down here so when that happen, the function write password goes off with a bang but 
-// writePassword makes the generatePassword function go and then the function grabRandom goes and then it filters back down
+//   passwordText.value = password;
+//   return finalPassword
+// }
+
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
 

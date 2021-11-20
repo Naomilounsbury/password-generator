@@ -29,7 +29,7 @@ function generatePassword() {
   var passwordSpecialCharacter = confirm("Do you want any special characters in your password? (OK meaning 'yes' and cancel meaning 'no'");
   var passwordUpperCase = confirm("Do you want an upper case letters in your password? ");
   var passwordLowerCase = confirm("Do you want any lower case letters in your password?");
-  var passwordNumbers = confirm("Do you want any numbers in your password? ");
+  var passwordNumbers = confirm("Do you want any numbers in your password? (OK meaning 'yes' and cancel meaning 'no')");
   console.log(passwordLength, passwordSpecialCharacter, passwordUpperCase, passwordLowerCase, passwordNumbers);
   // four individual if statements to check if they answered yes to each question
   if (passwordSpecialCharacter === true) {
