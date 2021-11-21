@@ -26,23 +26,20 @@ function generatePassword() {
   var finalPassword = []
   //declaring our variables with prompts to ask what people what in their password
   var passwordLength = prompt("How long do you want your password to be? Please enter a number between 8 and 128.");
-  // I had to use console.log typeof passwordLength to figure out what I was dealing with and it was a freaking string
   console.log(typeof passwordLength)
-  // because its a string I had to parse it into an integer
-  if (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128) {
-    //window alerts may be the only thing i really understand
-    window.alert("That was not a number between 8 and 128. Try again.");
-    //this returns to the beginning I tried using "return passwordLength" and obviously that didn't work because I changed it
-    return generatePassword();
-  }
+   if (passwordLength <  8 && passwordLength > 128) {
+      window.alert("You need to provide a number between 8 and 128! Please try again.");
+      // use return to call it again and stop the rest of this function from running
+      return;
+   }
   var passwordSpecialCharacter = confirm("Do you want any special characters in your password? (OK meaning 'yes' and cancel meaning 'no'");
   var passwordUpperCase = confirm("Do you want an upper case letters in your password? ");
   var passwordLowerCase = confirm("Do you want any lower case letters in your password?");
   var passwordNumbers = confirm("Do you want any numbers in your password? ");
   console.log(passwordLength, passwordSpecialCharacter, passwordUpperCase, passwordLowerCase, passwordNumbers);
-
   // four individual if statements to check if they answered yes to each question
   // validate prompt answer
+
   if (passwordSpecialCharacter === true) {
     //we are adding our characters from the special list into our character pool
     passwordPool.push(...special);
@@ -74,18 +71,18 @@ function generatePassword() {
   // after weve looped through, final password should have the length that the user wanted and have any characters that they chose.
   //we used .join to join everything that we previously grabbed and put it together.
   return finalPassword.join("");
-  //
+//
 }
 
 
 // Write password to the #password input
-
+ 
 function writePassword() {
   //so this is literally running the function we made above and putting it with the id #password in the html
   var password = generatePassword();
   // so this corresponds to the id in the html
   var passwordText = document.querySelector("#password");
-  //I'm not exactly sure what this means
+//I'm not exactly sure what this means
   passwordText.value = password;
   //What I don't understand is this return final password because finalPassword was only inside the previous function
   //so how is this doing anything? Is it doing anything?
@@ -93,7 +90,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button, it feels like its going backward but the way I understand it
-// is the click is down here so when that happens, the function writePassword goes off with a bang but 
+// is the click is down here so when that happen, the function write password goes off with a bang but 
 // writePassword makes the generatePassword function go and then the function grabRandom goes and then it filters back down
 generateBtn.addEventListener("click", writePassword);
 
